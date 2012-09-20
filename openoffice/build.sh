@@ -4,7 +4,7 @@
 prefix="OpenOffice"
 suffix=""
 package_name="OpenOffice"
-url=`cat /var/tmp/OpenOfficeURL`
+url=`./monitor.sh`
 
 # download it
 curl -L -o app.dmg $url
