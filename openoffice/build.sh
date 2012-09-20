@@ -4,7 +4,7 @@
 prefix="OpenOffice"
 suffix=""
 package_name="OpenOffice"
-url=`./monitor.sh`
+url=`ruby openofficefinder.rb`
 
 # download it
 curl -L -o app.dmg $url
