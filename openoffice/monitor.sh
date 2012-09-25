@@ -1,4 +1,3 @@
 #!/bin/bash
 
-ruby openofficefinder.rb > /var/tmp/OpenOfficeURL
-
+exec ruby openofficefinder.rb /var/tmp/OpenOfficeURL
