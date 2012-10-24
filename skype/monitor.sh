@@ -2,7 +2,7 @@
 
 URL=`./skypefinder.sh`
 
-if [ "x${URL}" != "x" ]; then
-		echo URL: "${URL}"
+if echo ${URL} | grep -q .dmg; then
+	echo URL: "${URL}"
         echo "${URL}" > /var/tmp/SkypeURL
 fi
