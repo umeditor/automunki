@@ -16,15 +16,14 @@ mkdir -p "build-root/Library/Internet Plug-Ins/JavaAppletPlugin.plugin"
 pkgutil --expand "${mountpoint}"/Java*pkg flat-pack
 pwd=`pwd`
 
-for payload in `find "${pwd}/flat-pack" -name 'Payload'`; do
+for payload in `find flat-pack -name 'Payload'`; do
         echo $payload
-        (cd "build-root/Library/Internet Plug-Ins/JavaAppletPlugin.plugin"; pax -rz -f "$payload")
+        (cd "build-root/Library/Internet Plug-Ins/JavaAppletPlugin.plugin"; pax -rz -f "${pwd}/$payload")
 done
 
 hdiutil detach "$mountpoint"
 
 # Obtain version info
-pwd=`pwd`
 plugin_version=`defaults read "${pwd}/build-root/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Info" CFBundleVersion`
 package_version=`echo ${plugin_version} | perl -p -e 's/^\d\.//'`
 
