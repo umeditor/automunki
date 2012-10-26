@@ -2,7 +2,7 @@
 
 URL=`./javafinder.rb`
 
-if echo ${URL} | grep -q .dmg; then
+if [ "x${URL}" != "x" ]; then
 	echo URL: "${URL}"
         echo "${URL}" > /var/tmp/JavaPluginURL
 fi
