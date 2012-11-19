@@ -1,0 +1,4 @@
+*.dmg
+*.plist
+build-root
+flat-pack
