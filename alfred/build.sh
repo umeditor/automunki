@@ -4,13 +4,14 @@
 prefix="Alfred"
 suffix=""
 package_name="Alfred"
-url=`ruby find-alfred.rb 'http://www.alfredapp.com/'`
+url=`ruby ~/automunki/alfred/find-alfred.rb 'http://www.alfredapp.com/'`
 
 # download it
-curl -o app.dmg $url
-
+curl -o app.zip $url
+unzip app.zip
+hdiutil create -srcfolder Alfred.app Alfred.dmg
 # Build pkginfo
-/usr/local/munki/makepkginfo -m go-w -g admin -o root app.dmg > app.plist
+/usr/local/munki/makepkginfo -m go-w -g admin -o root Alfred.dmg > app.plist
 
 plist=`pwd`/app.plist
 
@@ -28,6 +29,6 @@ defaults write "${plist}" name "${package_name}"
 chmod a+r "${plist}"
 
 # Change filenames to suit
-mv app.dmg   ${prefix}-${version}${suffix}.dmg
+mv Alfred.dmg ${prefix}-${version}${suffix}.dmg
 mv app.plist ${prefix}-${version}${suffix}.plist
 
