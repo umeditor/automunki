@@ -4,7 +4,7 @@
 prefix="Alfred"
 suffix=""
 package_name="Alfred"
-url=`ruby ~/automunki/alfred/find-alfred.rb 'http://www.alfredapp.com/'`
+url=`ruby find-alfred.rb 'http://www.alfredapp.com/'`
 
 # download it
 curl -o app.zip $url
