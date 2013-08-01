@@ -1,2 +1,3 @@
 *.dmg
 *.plist
+.DS_Store
