@@ -26,7 +26,7 @@ plist=`pwd`/BoxSync.plist
 version=`defaults read "${plist}" version`
 
 # Change path and other details in the plist
-defaults write "${plist}" installer_item_location "jenkins/${prefix}-${version}${suffix}.dmg"
+defaults write "${plist}" installer_item_location "${prefix}-${version}${suffix}.dmg"
 defaults write "${plist}" minimum_os_version "10.6.8"
 defaults write "${plist}" uninstallable -bool NO
 defaults write "${plist}" name "${package_name}"
