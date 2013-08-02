@@ -3,7 +3,7 @@
 # CONFIG
 prefix="CiscoAnyConnectVPN"
 suffix=""
-package_name="Cisco AnyConnect VPN"
+package_name="CiscoAnyConnectVPN"
 
 if [ "x$1" == "x" ]; then
 	echo "Usage: ./build.sh <Path-To-Package>"
