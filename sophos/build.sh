@@ -20,7 +20,7 @@ cp "${url}" app.dmg
 # Mount
 mountpoint=`hdiutil attach -mountrandom /tmp -nobrowse app.dmg | awk '/private\/tmp/ { print $NF } '`
 
-# Find all the appropriate apps, etc, and then turn that into -f's
+# Extract all sub-packages
 mkdir -p build-root
 find "${mountpoint}/Sophos Anti-Virus.mpkg" -name *.pkg -type d -exec sh -c '
 	pkg="$0"
@@ -53,7 +53,6 @@ defaults write "${plist}" uninstallable -bool NO
 defaults write "${plist}" name "${package_name}"
 defaults write "${plist}" display_name "${display_name}"
 defaults write "${plist}" description "${description}"
-
 
 # Make readable by humans
 /usr/bin/plutil -convert xml1 "${plist}"
