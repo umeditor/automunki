@@ -33,7 +33,7 @@ for payload in tmp/*.pkg/Payload; do
 done
 
 # Find all the appropriate apps, etc, and then turn that into -f's
-key_files=`find build-root -name '*.app' -or -name '*.plugin' -or -name '*.prefPane' -or -name '*component' | grep -v "Document Connection" | sed 's/ /\\\\ /g; s/^/-f /' | paste -s -d ' ' -`
+key_files=`find build-root -name '*.app' -or -name '*.plugin' -or -name '*.prefPane' -or -name '*component' | sed 's/ /\\\\ /g; s/^/-f /' | paste -s -d ' ' -`
 
 # Build pkginfo (this is done through an echo to expand key_files)
 echo /usr/local/munki/makepkginfo -m go-w -g admin -o root app.dmg ${key_files} | /bin/bash > app.plist
