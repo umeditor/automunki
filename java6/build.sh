@@ -4,7 +4,7 @@
 prefix="Java6"
 suffix=""
 package_name="Java6"
-display_name="Java 7"
+display_name="Java 6"
 
 if [ "x$1" == "x" ]; then
 	echo "Usage: ./build.sh <Path-To-Package>"
