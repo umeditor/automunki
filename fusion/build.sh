@@ -47,7 +47,6 @@ key_files=`find build-root -name '*.app' -or -name '*.plugin' -or -name '*.prefP
 
 # plist prefers full paths
 plist=`pwd`/app.plist
-versionplist="`pwd`/build-root/Deploy VMware Fusion.mpkg/Contents/00Fusion_Deployment_Items/VMware Fusion.app/Contents/Info.plist"
 
 # Build pkginfo (this is done through an echo to expand key_files)
 echo /usr/local/munki/makepkginfo -m go-w -g admin -o root app.dmg ${key_files} | /bin/bash > ${plist}
@@ -56,6 +55,7 @@ echo /usr/local/munki/makepkginfo -m go-w -g admin -o root app.dmg ${key_files} 
 perl -p -i -e 's/build-root\/Deploy VMware Fusion.mpkg\/Contents\/00Fusion_Deployment_Items/Applications/' ${plist}
 
 # Obtain and set version
+versionplist="`pwd`/build-root/Deploy VMware Fusion.mpkg/Contents/00Fusion_Deployment_Items/VMware Fusion.app/Contents/Info.plist"
 version=`defaults read "${versionplist}" CFBundleShortVersionString`
 defaults write "${plist}" version "${version}"
 
