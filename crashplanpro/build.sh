@@ -42,7 +42,7 @@ plist=`pwd`/app.plist
 echo /usr/local/munki/makepkginfo -m go-w -g admin -o root app.dmg ${key_files} | /bin/bash > ${plist}
 
 # Remove "build-root" from file paths
-perl -p -i -e 's/build-root//' ${plist}
+perl -p -i -e 's/build-root/\/Applications/' ${plist}
 
 # Obtain and set version
 versionplist="`pwd`/build-root/CrashPlan.app/Contents/Info.plist"
