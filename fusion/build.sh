@@ -28,7 +28,8 @@ mkdir build-root
 ditto "${mountpoint}/VMware Fusion.app/Contents/Library/Deploy VMware Fusion.mpkg" "build-root/Deploy VMware Fusion.mpkg"
 
 # Add the serial number
-echo "key = ${serial}" >> "build-root/Deploy VMware Fusion.mpkg/Contents/00Fusion_Deployment_Items/Deploy.ini"
+sed -i '' '/# key = XXXXX-XXXXX-XXXXX-XXXXX-XXXXX/a \
+key = '"${serial}"'' 'build-root/Deploy VMware Fusion.mpkg/Contents/00Fusion_Deployment_Items/Deploy.ini'
 
 # Copy app for modification
 ditto "${mountpoint}/VMware Fusion.app" "build-root/Deploy VMware Fusion.mpkg/Contents/00Fusion_Deployment_Items/VMware Fusion.app"
